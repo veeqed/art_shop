@@ -1,0 +1,34 @@
+.bg-head{
+    background:#E8C872;
+}
+
+/* Styles for wrapping the search box */
+
+.main-search {
+    width: 50%;
+    margin: 20px auto;
+}
+
+/* Bootstrap 4 text input with search icon */
+
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 3rem;
+    height: 2.375rem;
+    line-height: 3rem;
+    text-align: center;
+    pointer-events: none;
+    color: #FFA447;
+    font-weight: bold;
+}
+
+.has-search input{
+    height: 45px;
+    border-radius: 20px;
+}
