@@ -1,0 +1,276 @@
+/* Styles for wrapping the search box */
+body{
+    font-family: "Noto Sans Thai", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    background-color: #f1f1f1;
+}
+.remove-pading{
+    padding:0px;
+}
+
+.container {
+    align-items: center;
+    max-width:1016px;
+}
+
+/*header*/
+#headerSp{
+    display:none;
+}
+#headerPc{
+    display:block;
+}
+.header-left{
+    float:left;
+    width:25%;
+    text-align: left;
+}
+.header-center{
+    float:left;
+    width:50%;
+}
+.header-right{
+    float:left;
+    width:25%;
+    text-align:right;
+}
+.hamburger-menu{
+    float:left;
+    color:#FFFFFF;
+    padding-top:15px;
+    font-size:32px;
+    font-weight: bold;
+}
+.hamburger-menu label{
+    cursor:pointer;
+}
+.shopping-cart{
+    text-align: left;
+    padding-top:30px;
+    display: inline-block;
+}
+.shopping-cart img{
+    width:30px;
+}
+.cart-number{
+    font-size:12px;
+    font-weight:bold;
+    color: #ee2c4a;
+    background: #FFFFFF;
+    border:1px solid #FFFFFF;
+    position:relative;
+    display:inline-block;
+    left:-8px;
+    top:-15px;
+    opacity:0.9;
+    border-radius: 10px;
+    min-width:20px;
+    min-height:20px;
+    padding-left:3px;
+    padding-right:3px;
+    text-align: center;
+    line-height: 20px;
+}
+.sign-up-link{
+    display:inline-block;
+    padding-right:10px;
+    color:#FFFFFF;
+    font-size:15px;
+    line-height: 12px;
+}
+.login-link{
+    display:inline-block;
+    padding-left:10px;
+    color:#FFFFFF;
+    font-size:15px;
+    border-left:1px solid #FFFFFF;
+}
+.header{
+    background-color: #F2BE22;
+}
+.header-search {
+    width: 100%;
+    max-width:500px;
+    margin: 20px auto;
+}
+
+.has-search .form-control {
+    padding-left: 2.5rem;
+    height:45px;
+    border-radius: 25px;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.7rem;
+    text-align: center;
+    pointer-events: none;
+    padding-left: 0.5rem;
+    color: #aaa;
+    font-size:22px;
+}
+
+@media screen and (max-width: 759px) {
+    #headerSp{
+        display:block;
+    }
+    #headerPc{
+        display:none;
+    }
+    .header-left{
+        float:left;
+        width:22%;
+    }
+    .header-center{
+        float:left;
+        width:53%;
+    }
+    .header-right{
+        float:left;
+        width:25%;
+        padding-left:0px;
+    }
+    .header-search {
+        width: 100%;
+        margin: 13px auto;
+    }
+    .has-search .form-control {
+        padding-left: 2.5rem;
+        height:36px;
+        border-radius: 25px;
+    }
+    .has-search .form-control-feedback {
+        line-height: 2.3rem;
+        font-size:18px;
+    }
+    .shopping-cart{
+        padding-top:15px;
+    }
+    .shopping-cart img{
+        width:25px;
+    }
+    .account-icon{
+        width:25px;
+    }
+    .hamburger-menu{
+        padding-top:5px;
+    }
+}
+
+/**footer**/
+footer{
+    background-color: #EEC759;
+}
+/*home page*/
+.masonry-demo {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+}
+ngx-masonry {
+    margin: 0 auto;
+}
+.masonry-item {
+    margin-bottom: 20px;
+    background-color: #f1f1f1;
+    background-size: cover;
+    width:300px;
+}
+
+.masonry-item img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+a:link, a:visited, a:hover, a:active{
+    color:#212529;
+    text-decoration: none; 
+}
+.product-title {
+    text-align: left;
+    display: block;
+    margin-top:10px;
+}
+.product-price{
+    text-align: left;
+    font-size:14px;
+}
+/**artist page**/
+.artist-image{
+    max-width: 450px;
+    width:100%;
+    margin:0 auto;
+    display: block;
+}
+
+/**product page**/
+.product .title{
+    font-size:24px;
+    font-weight: bold;
+}
+.product .price{
+    font-size:24px;
+}
+.btn-submit{
+    background-color: #F2BE22;
+    width:200px;
+    padding-top:10px;
+    padding-bottom:10px;
+    color:#000000;
+    border:none;
+    font-weight: bold;
+}
+
+/**signup page**/
+.container.signup{
+    max-width:720px;
+    background-color: #FFFFFF;
+    padding:25px;
+    border-radius: 5px;
+    margin-top:30px;
+    margin-bottom:30px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.signup-text2{
+    color:#708090;
+}
+.form-label{
+    font-weight: bold;
+    line-height:2.7rem;
+}
+*::placeholder {
+    /* modern browser */
+    color: #D3D3D3 !important;
+}
+.shipping-title{
+    font-weight: bold;
+    font-size:20px;
+}
+.text-error{
+    color:red;
+    font-size:14px;
+    margin-top:10px;
+    margin-bottom:15px;
+}
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+/**signup page**/
+.container.create-product{
+    max-width:720px;
+    background-color: #FFFFFF;
+    padding:25px;
+    border-radius: 5px;
+    margin-top:30px;
+    margin-bottom:30px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}

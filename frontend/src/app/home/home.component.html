@@ -1,0 +1,14 @@
+<div class="container-fluid mt-3 remove-padding">
+  
+  <div class="masonry-demo">
+    <ngx-masonry [options]="masonryOptions" >
+      <div ngxMasonryItem class="masonry-item"  *ngFor="let product of products" class="masonry-item">
+        <a [routerLink]="['/products', product.product_code]">
+          <img src="{{imageUrl}}/{{product.image}}" />
+        </a>
+        <a [routerLink]="['/products', product.product_code]" class="product-title">{{product.product_name}}</a>
+        <div class="product-price">{{formatter.format(product.price)}}</div>
+      </div>
+    </ngx-masonry>
+  </div>
+</div>

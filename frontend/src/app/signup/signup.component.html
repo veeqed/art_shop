@@ -1,0 +1,174 @@
+<div class="container signup">
+    <form [formGroup]="registerForm" (submit)="onSubmit()" novalidate>
+    <div class="row">
+        <div class="col-12">
+            <h2>Sign up Form</h2>
+            <div class="signup-text2">Apply for membership to receive special privileges</div>
+        </div>
+    </div>
+    
+    <div class="row mt-4">
+        <div class="col-sm-12 col-md-4">
+            <label class="form-label" for="email">E-mail</label>
+        </div>
+        <div class="col-sm-12 col-md-8">
+            <input class="form-control" formControlName="email" type="text" id="email" placeholder="ex: myname@example.com" />
+            
+            <div *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)" class="text-error">
+                <div *ngIf="registerForm.controls['email'].errors?.['required']">
+                  Email is required.
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-4">
+            <label class="form-label" for="password">Password</label>
+        </div>
+        <div class="col-sm-12 col-md-8">
+            <input class="form-control" formControlName="password" type="password" name="password" id="password" />
+        
+            <div *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)" class="text-error">
+                <div *ngIf="registerForm.controls['password'].errors?.['required']">
+                  Password is required.
+                </div>
+                <div *ngIf="registerForm.controls['password'].errors?.['minlength']">
+                  The password must be at least 6 characters.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-4">
+            <label class="form-label" for="confirm_password">Confirm Password</label>
+        </div>
+        <div class="col-sm-12 col-md-8">
+            <input class="form-control" formControlName="confirmPassword" type="password" name="confirmPassword" id="confirmPassword" />
+        
+            <div *ngIf="registerForm.errors?.['passwordmatcherror'] && (registerForm.touched || registerForm.dirty)" class="text-error">
+                Confirm password not matched.
+            </div>
+        </div> 
+    </div>
+
+    <div class="mt-4 shipping-title">Shipping Address</div>
+
+    <div class="row mt-2">
+        <div class="col-sm-12 col-md-4">
+            <label class="form-label">Name</label>
+        </div>
+        <div class="col-sm-12 col-md-8">
+            <div class="row">
+                <div class="col-sm-6 col-md-6 pe-0">
+                    <input class="form-control" type="text" formControlName="firstName" name="first_name" id="first_name" placeholder="First Name" />
+                    
+                    <div *ngIf="registerForm.controls['firstName'].invalid && (registerForm.controls['firstName'].dirty || registerForm.controls['firstName'].touched)" class="text-error">
+                        <div *ngIf="registerForm.controls['firstName'].errors?.['required']" >
+                            First Name is required.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6 pl-0">
+                    <input class="form-control" type="text" formControlName="lastName" name="last_name" id="last_name" placeholder="Last Name" />
+                
+                    <div *ngIf="registerForm.controls['lastName'].invalid && (registerForm.controls['lastName'].dirty || registerForm.controls['lastName'].touched)" class="text-error">
+                        <div *ngIf="registerForm.controls['lastName'].errors?.['required']" >
+                            Last Name is required.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-4">
+            <label class="form-label" for="phone_number">Phone Number</label>
+        </div>
+        <div class="col-sm-12 col-md-8">
+            <input class="form-control" type="text" name="phone_number" id="phone_number" placeholder="(000) 000-0000" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-4">
+            <label class="form-label" for="address">Address</label>
+        </div>
+        <div class="col-sm-12 col-md-8">
+            <input class="form-control" type="text" name="address" id="address" placeholder="Street Address" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-4">
+            <label class="form-label" for="postcode">Postal / Zip Code</label>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <input class="form-control" type="number" maxlength="5" name="postcode" id="postcode" formControlName="postcode" (keyup)="getFromZip($event)" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-4">
+            <label class="form-label" for="province">Province</label>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <select class="form-select" formControlName="province" id="province" name="province">
+                <option value=""></option>
+                <option *ngFor="let p of provinces" [value]="p">
+                    {{ p.name_en }}
+                </option>
+            </select>
+
+            <div *ngIf="registerForm.controls['province'].invalid && (registerForm.controls['province'].dirty || registerForm.controls['province'].touched)" class="text-error">
+                <div *ngIf="registerForm.controls['province'].errors?.['required']">
+                  Province is required.
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-12 col-md-4">
+            <label class="form-label" for="district">District</label>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <select class="form-select" formControlName="district" id="district" name="district">
+                <option></option>
+                <option *ngFor="let a of amphures">
+                    {{ a.name_en }}
+                </option>
+            </select>
+
+            <div *ngIf="registerForm.controls['district'].invalid && (registerForm.controls['district'].dirty || registerForm.controls['district'].touched)" class="text-error">
+                <div *ngIf="registerForm.controls['district'].errors?.['required']">
+                   District is required.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-4">
+            <label class="form-label" for="subdistrict">Subdistrict</label>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <select class="form-select" formControlName="subdistrict" id="subdistrict" name="subdistrict">
+                <option></option>
+                <option *ngFor="let t of tambons">
+                    {{ t.name_en }}
+                </option>
+            </select>
+
+            <div *ngIf="registerForm.controls['subdistrict'].invalid && (registerForm.controls['subdistrict'].dirty || registerForm.controls['subdistrict'].touched)" class="text-error">
+                <div *ngIf="registerForm.controls['subdistrict'].errors?.['required']">
+                   Subdistrict is required.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12 text-center">
+            <button class="btn-submit" type="submit">Submit</button>
+        </div>
+    </div>
+</form>
+</div>

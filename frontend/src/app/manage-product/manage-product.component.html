@@ -1,0 +1,71 @@
+<div class="container create-product">
+    <h2>Create Product</h2>
+    <form enctype="multipart/form-data" [formGroup]="productForm" (submit)="onSubmit()" novalidate>
+    <div class="row mt-4">
+        <div class="col-sm-12 col-md-4">
+            <label class="form-label" for="product_name">Name</label>
+        </div>
+        <div class="col-sm-12 col-md-8">
+            <input class="form-control" formControlName="product_name" type="text" name="product_name" id="product_name" />
+        
+            <div *ngIf="productForm.controls['product_name'].invalid && (productForm.controls['product_name'].dirty || productForm.controls['product_name'].touched)" class="text-error">
+                <div *ngIf="productForm.controls['product_name'].errors?.['required']">
+                   Name is required.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-sm-12 col-md-4">
+            <label class="form-label" for="product_code">Product Code</label>
+        </div>
+        <div class="col-sm-12 col-md-8">
+            <input class="form-control" formControlName="product_code" type="text" name="product_code" id="product_code" />
+        
+            <div *ngIf="productForm.controls['product_code'].invalid && (productForm.controls['product_code'].dirty || productForm.controls['product_code'].touched)" class="text-error">
+                <div *ngIf="productForm.controls['product_code'].errors?.['required']">
+                    Product Code is required.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-4">
+            <label class="form-label" for="price">Price</label>
+        </div>
+        <div class="col-sm-12 col-md-3">
+            <input class="form-control" type="number" formControlName="price" name="price" id="price" />
+        
+            <div *ngIf="productForm.controls['price'].invalid && (productForm.controls['price'].dirty || productForm.controls['price'].touched)" class="text-error">
+                <div *ngIf="productForm.controls['price'].errors?.['required']">
+                   Price is required.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-4">
+            <label class="form-label" for="image">Image</label>
+        </div>
+        <div class="col-sm-12 col-md-8">
+            <input class="form-control" type="file" formControlName="imageUpload" accept="image/png, image/jpeg" name="image_upload" id="image_upload" (change)="createThumbnail($event)" />
+        
+            <div *ngIf="productForm.controls['imageUpload'].invalid && (productForm.controls['imageUpload'].dirty || productForm.controls['imageUpload'].touched)" class="text-error">
+                <div *ngIf="productForm.controls['imageUpload'].errors?.['required']">
+                   Image is required.
+                </div>
+            </div>
+
+            <div class="clear mt-4"></div>
+
+            <img class="img-fluid" [src]="imageSrc || './assets/images/noimage.png'" alt="your image" />
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12 text-center">
+            <button class="btn-submit" type="submit">Save</button>
+        </div>
+    </div>
+</form>
+</div>

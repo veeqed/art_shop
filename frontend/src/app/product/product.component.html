@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row mt-4" >
+        <div class="col-sm-12 col-md-6">
+            <img src="{{imageUrl}}/{{product.image}}" class="img-fluid" />
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <div class="product mt-4">
+                <div class="title">
+                    {{product.product_name}}
+                </div>
+                <div class="price">
+                    {{formatter.format(product.price)}}
+                </div>
+                <div class="detail">
+                    <div><span class="fw-bold">Category:</span> Abstract art</div>
+                    <div><span class="fw-bold">Code:</span> 925</div>
+                    <div><span class="fw-bold">Size:</span> W 85 x H 85 x D 3.5 cm.</div>
+                    <div><span class="fw-bold">Weight:</span> 5 kg</div>
+                    <div><span class="fw-bold">Materials:</span> Acrylic paint, Canvas, Solid wooden frame</div>
+                    <div><span class="fw-bold">Origin:</span> Made in Thailand</div>
+                    <div>Ready to Hang on Wall When Arrive</div>
+ 
+                    <div class="mt-4">
+                        Free Fast Shipping within Thailand<br>
+                        International Shipping to All Countries Worldwide by Air<br>
+                        2 options: Express Fast and Normal Register depend on weight and time of delivery
+                    </div>
+
+                </div>
+
+                <div class="mt-2">
+                    <button class="btn-submit" (click)="addCart()">Buy</button>
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+</div>
+

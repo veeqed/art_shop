@@ -1,0 +1,56 @@
+<div (clickOutside)="closeMenu()">
+<div class="sidenav" [ngStyle]='{ width : menuWidth }' >
+    <a href="javascript:void(0)" class="closebtn" (click)="closeMenu()" >&times;</a>
+    <a class="navbar-brand" routerLink="/home" routerLinkActive="active">Home</a>
+    <a class="navbar-brand" routerLink="/artist" routerLinkActive="active">Artist</a>
+    <a class="navbar-brand" routerLink="/users" routerLinkActive="active">User</a>
+    <a class="navbar-brand" routerLink="/products" routerLinkActive="active">Product</a>      
+    <a class="navbar-brand" routerLink="/product/create" routerLinkActive="active">Create Product</a>      
+    <a class="navbar-brand" routerLink="/contact" routerLinkActive="active">Contact Us</a>
+</div>
+
+<div class="container-fluid header">
+
+<div class="row">
+
+        <div class="header-left">
+            <div class="hamburger-menu" >
+                <label (click)="openMenu()"><i class="fa-solid fa-bars"></i></label>
+            </div>
+        </div>
+        <div class="header-center">
+            <div class="header-search">
+                <div class="form-group has-search">
+                    <span class="fa fa-search form-control-feedback"></span>
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+            </div>
+        </div>
+        <div class="header-right">
+            <div id="headerSp">
+                <div class="shopping-cart">
+                    <img src="./assets/images/cart.png" />
+                    <div class="cart-number">100</div>
+                </div>
+                <img class="account-icon" src="./assets/images/people-icon.png" />
+            </div>
+            <div id="headerPc">
+                <div class="shopping-cart">
+                    <img src="./assets/images/cart.png" />
+                    <div class="cart-number">100</div>
+                </div>
+                <div class="sign-up-link">
+                    <a class="navbar-brand" routerLink="/signup" routerLinkActive="active">Sign Up</a>
+                    
+                </div>
+                <div class="login-link">
+                    Login
+                </div>
+            </div>
+        </div>
+        
+
+</div>
+
+</div>
+</div>
