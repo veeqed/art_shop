@@ -29,4 +29,23 @@ export class ProductService {
 
     return this.http.post(endpointUrl, formData);
   }
+
+  getCartCount()
+  {
+    let local_storage: any;
+    let cartCount: number;
+
+    if (localStorage.getItem('cart') !== null)
+    {
+      local_storage = JSON.parse(localStorage.getItem('cart') || '{}');
+      cartCount = local_storage.length;
+    }
+    else
+    {
+      cartCount = 0;
+    }
+
+    return cartCount;
+  }
+
 }

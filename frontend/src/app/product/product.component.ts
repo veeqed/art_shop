@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { CartService } from "../cart.service";
+import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 import { ProductService } from '../shared/product.service';
+import { CartService } from "../shared/cart.service";
 import { Product } from '../shared/product.model';
+import { Cart } from '../shared/cart.model';
 interface Item {
   icon: string;
 }
@@ -13,17 +14,20 @@ interface Item {
   styleUrl: './product.component.css'
 })
 export class ProductComponent {
-  @Input() item: Item;
+  items: Cart[] = [];
   product_code: any;
   product: Product;
   readonly imageUrl: string = "http://localhost:3000/images";
   formatter = new Intl.NumberFormat('th-TH', { style: 'currency', currency: 'THB',
   minimumFractionDigits: 0 });
 
-  constructor(private itemServ: CartService
+  private _numbers: number = 0;
+  @Output() numbers = new EventEmitter<number>();
+
+  constructor(private CartService: CartService
     , private route: ActivatedRoute
     , private ProductService: ProductService
-    , private ActivatedRoute: ActivatedRoute ) {
+    , private ActivatedRoute: ActivatedRoute) {
 
       this.product = {
         _id: "",
@@ -34,10 +38,17 @@ export class ProductComponent {
       };
   }
 
+  increaseNumbers() {
+    this._numbers++;
+    this.numbers.emit(this._numbers);
+  }
+
   ngOnInit() {
     this.product_code = this.ActivatedRoute.snapshot.params['product_code'];
 
     this.getProduct(this.product_code);
+    this.CartService.loadCart();
+    this.items = this.CartService.getItems();
   }
 
   getProduct(code: any) {
@@ -46,25 +57,24 @@ export class ProductComponent {
 		});
 	}
 
-  addCart() {
-    let local_storage: any;
-    let itemsInCart = [];
+  addToCart(item: Product) {
+    let cartItem = new Cart();
+    cartItem.product_code = item.product_code;
+    cartItem.product_name = item.product_name;
 
-    if (localStorage.getItem('cart') == null)
-    {
-      itemsInCart.push(this.product);
+    let cartItemExist = this.CartService.itemInCart(cartItem);
 
-      localStorage.setItem('cart', JSON.stringify(itemsInCart));
-    }
-    else
-    {
-      local_storage = JSON.parse(localStorage.getItem('cart') || '{}');
-      
-      itemsInCart = local_storage;
-      itemsInCart.push(this.product);
+    console.log(cartItemExist);
 
-      localStorage.setItem('cart', JSON.stringify(itemsInCart));
+    if (!cartItemExist) {
+      cartItem.quantity = 1;
+      this.CartService.addToCart(cartItem); //add items in cart
+      this.items = [...this.CartService.getItems()];
     }
 
+    console.log(this.items);
+
+    let cartCount = this.CartService.getCartCount();
+    this.CartService.setCartCount(cartCount);
   }
 }
