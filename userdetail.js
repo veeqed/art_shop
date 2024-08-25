@@ -2,5 +2,5 @@
 
 <script runat="server">
 	Platform.Load("core", "1");
-	Write('<input type="text" name="FirstName" placeholder="Your FirstName..." value="'+FirstName+'"/>');
+	Write('<input type="text" name="FirstName" placeholder="Your FirstName..." value="'+firstName+'"/>');
 </script>
